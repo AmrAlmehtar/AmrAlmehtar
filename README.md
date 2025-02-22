@@ -1,11 +1,11 @@
-/// === [1] الواجهة الأمامية (Frontend) - React.js === ///
-// تثبيت React.js وإنشاء مشروع
-// افتح سطر الأوامر وشغل:
+/// === [1] Frontend - React.js === ///
+// Install React.js and create a project
+// Open the command line and run:
 npx create-react-app frontend
 cd frontend
 npm install axios react-router-dom tailwindcss
 
-// main.js - نقطة الدخول
+// main.js - Entry point
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
@@ -13,7 +13,7 @@ import './index.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
-// App.js - الصفحة الرئيسية
+// App.js - Main application
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
@@ -32,7 +32,7 @@ function App() {
 
 export default App;
 
-// pages/Home.js - عرض الإعلانات
+// pages/Home.js - Display listings
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -47,7 +47,7 @@ function Home() {
     
     return (
         <div>
-            <h1>إعلانات مبوبة</h1>
+            <h1>Classified Listings</h1>
             {listings.map(listing => (
                 <div key={listing._id}>
                     <h2>{listing.title}</h2>
@@ -60,14 +60,13 @@ function Home() {
 
 export default Home;
 
-
-/// === [2] الخلفية (Backend) - Node.js + Express === ///
-// تثبيت Express.js و Mongoose
-// افتح سطر الأوامر داخل مجلد جديد `backend` وشغل:
+/// === [2] Backend - Node.js + Express === ///
+// Install Express.js and Mongoose
+// Open the command line inside a new `backend` folder and run:
 npm init -y
 npm install express mongoose cors dotenv
 
-// server.js - إنشاء API للإعلانات
+// server.js - Create API for listings
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -104,19 +103,17 @@ app.post('/api/listings', async (req, res) => {
 
 app.listen(5000, () => console.log('Server running on port 5000'));
 
-
-/// === [3] قاعدة البيانات - MongoDB Atlas === ///
-// استخدم MongoDB Atlas لإنشاء قاعدة بيانات، ثم ضع الرابط في ملف `.env`
+/// === [3] Database - MongoDB Atlas === ///
+// Use MongoDB Atlas to create a database, then place the connection string in `.env`
 MONGO_URI=mongodb+srv://your-username:your-password@cluster.mongodb.net/dubizzle_clone?retryWrites=true&w=majority
 
-
-/// === [4] تشغيل المشروع === ///
-// شغل الخادم (Backend):
+/// === [4] Run the project === ///
+// Start the backend server:
 cd backend
 node server.js
 
-// شغل الواجهة (Frontend):
+// Start the frontend:
 cd frontend
 npm start
 
-// افتح `http://localhost:3000` لرؤية الموقع يعمل 🎉
+// Open `http://localhost:3000` to see the website working 🎉
